@@ -123,7 +123,7 @@ namespace RoverControl {
      * @param unit the unit of measurement (Centimeters, Inches, Microseconds), eg: PingUnit.Centimeters
      * @returns distance measured in the specified unit
      */
-    //% blockId="rover_read_distance" block="read distance in %unit"
+    //% blockId="rover_read_distance" block="distance from objects in %unit"
     //% unit.defl=PingUnit.Centimeters
     //% blockNamespace=RoverControl
     //% group="Sensors"
