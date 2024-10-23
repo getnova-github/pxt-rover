@@ -9,8 +9,8 @@ namespace RoverControl {
     //% speed.min=0 speed.max=100
     //% ms.shadow=timePicker
     export function moveForwardFor(speed: number, ms: number): void {
-        ContinuousServo.spin_one_way_with_speed(AnalogPin.P13, speed);
-        ContinuousServo.spin_other_way_with_speed(AnalogPin.P14, speed);
+        ContinuousServo.spin_other_way_with_speed(AnalogPin.P13, speed);
+        ContinuousServo.spin_one_way_with_speed(AnalogPin.P14, speed);
         basic.pause(ms);   // Wait for the specified duration
         stopRover();       // Stop the motors
     }
@@ -24,8 +24,8 @@ namespace RoverControl {
     //% speed.min=0 speed.max=100
     //% ms.shadow=timePicker
     export function moveBackwardFor(speed: number, ms: number): void {
-        ContinuousServo.spin_other_way_with_speed(AnalogPin.P13, speed);
-        ContinuousServo.spin_one_way_with_speed(AnalogPin.P14, speed);
+        ContinuousServo.spin_one_way_with_speed(AnalogPin.P13, speed);
+        ContinuousServo.spin_other_way_with_speed(AnalogPin.P14, speed);
         basic.pause(ms);   // Wait for the specified duration
         stopRover();       // Stop the motors
     }
