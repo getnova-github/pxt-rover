@@ -1,4 +1,4 @@
-//% icon="f5e4"
+//% icon="\uf5e4"
 namespace RoverControl {
 
     /**
