@@ -135,24 +135,31 @@ namespace RoverControl {
 
     /**
      * Boolean - get whether or not the left sensor is touching black
-     * @param threshold the threshold for activating e.g. 500
-     * @returns boolean of whether or not the left sensor is touching black
+     * @param threshold the threshold for activating, eg: 500
+     * @returns true if the left sensor detects black
      */
-    //% blockId=detect_black_left block="is left sensor touching black at threshold of %threshold"
-    function isLeftSensorTouchingBlack(threshold: number): boolean {
-        const leftSensorValue = pins.analogReadPin(AnalogPin.P0)
-        return leftSensorValue < threshold
+    //% blockId="detect_black_left" block="is left sensor touching black at threshold %threshold"
+    //% threshold.defl=500
+    //% blockNamespace=RoverControl
+    //% group="Sensors"
+    //% weight=90
+    export function isLeftSensorTouchingBlack(threshold: number): boolean {
+        const leftSensorValue = pins.analogReadPin(AnalogPin.P0);
+        return leftSensorValue < threshold;
     }
 
     /**
      * Boolean - get whether or not the right sensor is touching black
-     * @param threshold the threshold for activating e.g. 500
-     * @returns boolean of whether or not the right sensor is touching black
+     * @param threshold the threshold for activating, eg: 500
+     * @returns true if the right sensor detects black
      */
-    //% blockId=detect_black_right block="is right sensor touching black at threshold of %threshold"
+    //% blockId="detect_black_right" block="is right sensor touching black at threshold %threshold"
+    //% threshold.defl=500
+    //% blockNamespace=RoverControl
     //% group="Sensors"
-    function isRightSensorTouchingBlack(threshold: number): boolean {
-        const rightSensorValue = pins.analogReadPin(AnalogPin.P1)
-        return rightSensorValue < threshold
+    //% weight=80
+    export function isRightSensorTouchingBlack(threshold: number): boolean {
+        const rightSensorValue = pins.analogReadPin(AnalogPin.P1);
+        return rightSensorValue < threshold;
     }
 }
