@@ -68,8 +68,8 @@ namespace RoverControl {
     //% speed.min=0 speed.max=100
     export function moveForward(speed: number): void {
         // Left motor forward, right motor backward
-        ContinuousServo.spin_one_way_with_speed(AnalogPin.P13, speed);
-        ContinuousServo.spin_other_way_with_speed(AnalogPin.P14, speed);
+        ContinuousServo.spin_other_way_with_speed(AnalogPin.P13, speed);
+        ContinuousServo.spin_one_way_with_speed(AnalogPin.P14, speed);
     }
 
     /**
@@ -80,8 +80,8 @@ namespace RoverControl {
     //% speed.min=0 speed.max=100
     export function moveBackward(speed: number): void {
         // Left motor backward, right motor forward
-        ContinuousServo.spin_other_way_with_speed(AnalogPin.P13, speed);
-        ContinuousServo.spin_one_way_with_speed(AnalogPin.P14, speed);
+        ContinuousServo.spin_one_way_with_speed(AnalogPin.P13, speed);
+        ContinuousServo.spin_other_way_with_speed(AnalogPin.P14, speed);
     }
 
     /**
