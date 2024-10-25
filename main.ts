@@ -113,6 +113,7 @@ namespace RoverControl {
      * Stop the rover
      */
     //% block="stop"
+    //% weight=0
     export function stopRover(): void {
         // Stop both motors by setting speed to 0
         ContinuousServo.spin_one_way_with_speed(AnalogPin.P13, 0);
@@ -171,7 +172,6 @@ namespace RoverControl {
     //% degrees.min=0 degrees.max=360
     //% degrees.defl=90
     //% blockNamespace=RoverControl
-    //% weight=70
     export function turnLeftDegrees(degrees: number) {
         let initialHeading = input.compassHeading();
         let targetHeading = (initialHeading - degrees + 360) % 360;  // Ensure the heading is positive
@@ -198,7 +198,6 @@ namespace RoverControl {
     //% degrees.min=0 degrees.max=360
     //% degrees.defl=90
     //% blockNamespace=RoverControl
-    //% weight=70
     export function turnRightDegrees(degrees: number) {
         let initialHeading = input.compassHeading();
         let targetHeading = (initialHeading + degrees) % 360;
