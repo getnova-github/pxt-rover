@@ -162,4 +162,59 @@ namespace RoverControl {
         const rightSensorValue = pins.analogReadPin(AnalogPin.P1);
         return rightSensorValue < threshold;
     }
+
+    /**
+     * Turns left the input number of degrees
+     * @param degrees degrees to turn
+     */
+    //% blockId="turn_left_degrees" block="turn left %degrees degrees"
+    //% degrees.min=0 degrees.max=360
+    //% degrees.defl=90
+    //% blockNamespace=RoverControl
+    //% weight=70
+    export function turnLeftDegrees(degrees: number) {
+        let initialHeading = input.compassHeading();
+        let targetHeading = (initialHeading - degrees + 360) % 360;  // Ensure the heading is positive
+        
+        // Start turning left at speed 50
+        RoverControl.turnLeft(50);
+    
+        // Continuously check the heading until the target is reached
+        basic.forever(function () {
+            let currentHeading = input.compassHeading();
+            
+            // If the current heading is within a 5-degree range of the target
+            if (Math.abs(currentHeading - targetHeading) <= 5) {
+                RoverControl.stopRover();  // Stop the rover
+            }
+        });
+    }
+    
+    /**
+     * Turns right the input number of degrees
+     * @param degrees degrees to turn
+     */
+    //% blockId="turn_right_degrees" block="turn right %degrees degrees"
+    //% degrees.min=0 degrees.max=360
+    //% degrees.defl=90
+    //% blockNamespace=RoverControl
+    //% weight=70
+    export function turnRightDegrees(degrees: number) {
+        let initialHeading = input.compassHeading();
+        let targetHeading = (initialHeading + degrees) % 360;
+        
+        // Start turning right at speed 50
+        RoverControl.turnRight(50);
+    
+        // Continuously check the heading until the target is reached
+        basic.forever(function () {
+            let currentHeading = input.compassHeading();
+            
+            // If the current heading is within a 5-degree range of the target
+            if (Math.abs(currentHeading - targetHeading) <= 5) {
+                RoverControl.stopRover();  // Stop the rover
+            }
+        });
+    }
+    
 }
