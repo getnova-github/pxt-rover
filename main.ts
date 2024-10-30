@@ -164,15 +164,16 @@ namespace RoverControl {
         return rightSensorValue < threshold;
     }
 
+
     /**
-     * Turns left the input number of degrees
+     * BROKEN - Turns left the input number of degrees
      * @param degrees degrees to turn
      */
     //% blockId="turn_left_degrees" block="turn left %degrees degrees"
     //% degrees.min=0 degrees.max=360
     //% degrees.defl=90
     //% blockNamespace=RoverControl
-    export function turnLeftDegrees(degrees: number) {
+    function turnLeftDegrees(degrees: number) {
         let initialHeading = input.compassHeading();
         let targetHeading = (initialHeading - degrees + 360) % 360;  // Ensure the heading is positive
         
@@ -191,14 +192,14 @@ namespace RoverControl {
     }
     
     /**
-     * Turns right the input number of degrees
+     * BROKEN - Turns right the input number of degrees
      * @param degrees degrees to turn
      */
     //% blockId="turn_right_degrees" block="turn right %degrees degrees"
     //% degrees.min=0 degrees.max=360
     //% degrees.defl=90
     //% blockNamespace=RoverControl
-    export function turnRightDegrees(degrees: number) {
+    function turnRightDegrees(degrees: number) {
         let initialHeading = input.compassHeading();
         let targetHeading = (initialHeading + degrees) % 360;
         
@@ -215,5 +216,6 @@ namespace RoverControl {
             }
         });
     }
+    
     
 }
