@@ -162,5 +162,143 @@ namespace RoverControl {
     export function isRightSensorTouchingBlack(threshold: number): boolean {
         const rightSensorValue = pins.analogReadPin(AnalogPin.P1);
         return rightSensorValue < threshold;
-    }    
+    }
+
+    /**
+     * Move the tank backward at specified speed
+     * @param speed percentage of speed (0-100), eg: 50
+     */
+    //% block="move tank backward at $speed\\% speed"
+    //% speed.min=0 speed.max=100
+    //% blockNamespace=RoverControl
+    //% group="Tank"
+    export function tankMoveBackward(speed: number) {
+        ContinuousServo.spin_one_way_with_speed(AnalogPin.P13, speed)
+        ContinuousServo.spin_other_way_with_speed(AnalogPin.P14, speed)
+    }
+
+    /**
+     * Move the tank backward for specified time
+     * @param speed percentage of speed (0-100), eg: 50
+     * @param ms duration in milliseconds, eg: 1000
+     */
+    //% block="move tank backward at $speed\\% speed for $ms ms"
+    //% speed.min=0 speed.max=100
+    //% ms.shadow=timePicker
+    //% blockNamespace=RoverControl
+    //% group="Tank"
+    export function tankMoveBackwardFor(speed: number, ms: number) {
+        tankMoveBackward(speed)
+        basic.pause(ms)
+        stopRover()
+    }
+
+    /**
+     * Turn the tank left at specified speed
+     * @param speed percentage of speed (0-100), eg: 50
+     */
+    //% block="turn tank left at $speed\\% speed"
+    //% speed.min=0 speed.max=100
+    //% blockNamespace=RoverControl
+    //% group="Tank"
+    export function tankTurnLeft(speed: number) {
+        ContinuousServo.spin_one_way_with_speed(AnalogPin.P13, speed)
+        ContinuousServo.spin_one_way_with_speed(AnalogPin.P14, speed)
+    }
+
+    /**
+     * Turn the tank left for specified time
+     * @param speed percentage of speed (0-100), eg: 50
+     * @param ms duration in milliseconds, eg: 1000
+     */
+    //% block="turn tank left at $speed\\% speed for $ms ms"
+    //% speed.min=0 speed.max=100
+    //% ms.shadow=timePicker
+    //% blockNamespace=RoverControl
+    //% group="Tank"
+    export function tankTurnLeftFor(speed: number, ms: number) {
+        tankTurnLeft(speed)
+        basic.pause(ms)
+        stopRover()
+    }
+
+    /**
+     * Move the tank forward at specified speed
+     * @param speed percentage of speed (0-100), eg: 50
+     */
+    //% block="move tank forward at $speed\\% speed"
+    //% speed.min=0 speed.max=100
+    //% blockNamespace=RoverControl
+    //% group="Tank"
+    export function tankMoveForward(speed: number) {
+        ContinuousServo.spin_other_way_with_speed(AnalogPin.P13, speed)
+        ContinuousServo.spin_one_way_with_speed(AnalogPin.P14, speed)
+    }
+
+    /**
+     * Move the tank forward for specified time
+     * @param speed percentage of speed (0-100), eg: 50
+     * @param ms duration in milliseconds, eg: 1000
+     */
+    //% block="move tank forward at $speed\\% speed for $ms ms"
+    //% speed.min=0 speed.max=100
+    //% ms.shadow=timePicker
+    //% blockNamespace=RoverControl
+    //% group="Tank"
+    export function tankMoveForwardFor(speed: number, ms: number) {
+        tankMoveForward(speed)
+        basic.pause(ms)
+        stopRover()
+    }
+
+    /**
+     * Turn the tank right at specified speed
+     * @param speed percentage of speed (0-100), eg: 50
+     */
+    //% block="turn tank right at $speed\\% speed"
+    //% speed.min=0 speed.max=100
+    //% blockNamespace=RoverControl
+    //% group="Tank"
+    export function tankTurnRight(speed: number) {
+        ContinuousServo.spin_other_way_with_speed(AnalogPin.P13, speed)
+        ContinuousServo.spin_other_way_with_speed(AnalogPin.P14, speed)
+    }
+
+    /**
+     * Turn the tank right for specified time
+     * @param speed percentage of speed (0-100), eg: 50
+     * @param ms duration in milliseconds, eg: 1000
+     */
+    //% block="turn tank right at $speed\\% speed for $ms ms"
+    //% speed.min=0 speed.max=100
+    //% ms.shadow=timePicker
+    //% blockNamespace=RoverControl
+    //% group="Tank"
+    export function tankTurnRightFor(speed: number, ms: number) {
+        tankTurnRight(speed)
+        basic.pause(ms)
+        stopRover()
+    }
+
+    /**
+     * Open the tank gripper
+     */
+    //% block="open gripper"
+    //% blockNamespace=RoverControl
+    //% group="Tank"
+    export function tankGripperOpen() {
+        pins.servoWritePin(AnalogPin.P15, 105)
+    }
+    
+    /**
+     * Close the tank gripper
+     */
+    //% block="close gripper"
+    //% blockNamespace=RoverControl
+    //% group="Tank"
+    export function tankGripperClose() {
+        pins.servoWritePin(AnalogPin.P15, 135)
+    }
+
+
 }
