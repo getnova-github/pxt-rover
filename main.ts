@@ -183,4 +183,26 @@ namespace RoverControl {
     export function tankGripperClose() {
         pins.servoWritePin(AnalogPin.P15, 135)
     }
+
+    /**
+     * Open the tank gripper wide
+     */
+    //% block="open gripper wider"
+    //% blockNamespace=RoverControl
+    //% group="Tank"
+    export function tankGripperOpenWide() {
+        pins.servoWritePin(AnalogPin.P15, 75)
+    }
+
+    /**
+     * Set the tank gripper to a specific angle
+     * @param angle servo angle (0-180), eg: 90
+     */
+    //% block="set gripper to angle %angle"
+    //% angle.min=0 angle.max=180
+    //% blockNamespace=RoverControl
+    //% group="Tank"
+    export function tankGripperSetAngle(angle: number) {
+        pins.servoWritePin(AnalogPin.P15, angle)
+    }
 }
